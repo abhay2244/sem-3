@@ -1,0 +1,177 @@
+/* 1. All tables Insert, Update & Delete */
+/*INSERT TABALE*/
+CREATE PROCEDURE PR_DEPARTMENT_INSERT
+@DepartmentID INT,
+@DepartmentName VARCHAR(100)
+AS
+BEGIN
+INSERT INTO Department
+(
+	DepartmentID,
+	DepartmentName
+)
+VALUES
+(
+	@DepartmentID,
+	@DepartmentName
+)
+END
+ 
+EXEC PR_DEPARTMENT_INSERT 1,Admin
+EXEC PR_DEPARTMENT_INSERT 2,IT
+EXEC PR_DEPARTMENT_INSERT 3,HR
+EXEC PR_DEPARTMENT_INSERT 4,Account
+
+CREATE PROCEDURE PR_DESIGNATION_INSERT
+@DesignationID INT,
+@DesignationName VARCHAR(100)
+AS
+BEGIN
+INSERT INTO DESIGNATION
+(
+	DesignationID,
+	DesignationName
+)
+VALUES
+(
+	@DesignationID,
+	@DesignationName
+)
+END
+
+EXEC PR_DESIGNATION_INSERT 11,Jobber
+EXEC PR_DESIGNATION_INSERT 12,Welder
+EXEC PR_DESIGNATION_INSERT 13,Clerk
+EXEC PR_DESIGNATION_INSERT 14,Manager
+EXEC PR_DESIGNATION_INSERT 15,CEO
+
+
+
+CREATE PROCEDURE PR_PERSON_INSERT
+
+@FirstName VARCHAR(100),
+@LastName VARCHAR(100),
+@Salary DECIMAL(8,2),
+@JoiningDate Datetime,
+@DepartmentID INT,
+@DesignationID INT
+AS
+BEGIN
+INSERT INTO PERASON
+(
+	
+	FirstName,
+	LastName,
+	Salary,
+	JoiningDate,
+	DepartmentID,
+	DesignationID
+)
+VALUES
+(
+	
+	@FirstName,
+	@LastName,
+	@Salary,
+	@JoiningDate,
+	@DepartmentID,
+	@DesignationID
+)
+END
+
+EXEC PR_PERSON_INSERT Rahul,Anshu,56000,'1990-01-01',1,12
+EXEC PR_PERSON_INSERT Hardik,Hinsu,18000,'1990-09-25',2,11
+EXEC PR_PERSON_INSERT Bhavin,Kamani,25000,'1991-05-14',NULL,11
+EXEC PR_PERSON_INSERT Bhoomi,Patel,39000,'2014-02-20',1,13
+EXEC PR_PERSON_INSERT Rohit,Rajgor,17000,'1990-07-23',2,15
+EXEC PR_PERSON_INSERT Priya,Mehta,25000,'1990-10-18',2,NULL
+EXEC PR_PERSON_INSERT Neha,Trivedi,18000,'2014-02-20',3,15
+
+
+/*Update TABle DEPARTMENT*/
+CREATE PROCEDURE PR_DEPARTMENT_UPDATE
+@DepartmentID INT,
+@DepartmentName VARCHAR(100)
+AS
+BEGIN
+UPDATE Department
+SET
+	DepartmentID=@DepartmentID,
+	DepartmentName=@DepartmentName
+
+WHERE
+	DepartmentID=@DepartmentID
+END
+
+/*UPDATE DESIGNATION */
+
+CREATE PROCEDURE PR_DESIGNATION_UPDATE
+@DesignationID INT,
+@DesignationName VARCHAR(100)
+AS
+BEGIN
+UPDATE DESIGNATION
+SET
+	DesignationID=@DesignationID,
+	DesignationName=@DesignationName
+
+WHERE
+	DesignationID=@DesignationID
+END
+
+/* UPDATE PERSON*/
+
+CREATE PROCEDURE PR_PERSON_UPDATE
+@WorkerID int,
+@FirstName VARCHAR(100),
+@LastName VARCHAR(100),
+@Salary DECIMAL(8,2),
+@JoiningDate Datetime,
+@DepartmentID INT,
+@DesignationID INT
+AS
+BEGIN
+update PERASON
+SET
+	FirstName=@FirstName,
+	LastName=@LastName,
+	Salary=@Salary,
+	JoiningDate=@JoiningDate,
+	DepartmentID=@DepartmentID,
+	DesignationID=@DesignationID
+WHERE
+	WorkerID=@WorkerID
+END
+
+/*DELETE DEPARTMENT*/
+
+CREATE PROCEDURE PR_DEPARTMENT_DELETE
+@DepartmentID INT
+AS
+BEGIN
+DELETE FROM  Department
+WHERE
+	DepartmentID=@DepartmentID
+END
+
+/* DELETE DESIGNATION*/
+
+CREATE PROCEDURE PR_DESIGNATION_DELETE
+@DesignationID INT
+AS
+BEGIN
+DELETE FROM DESIGNATION
+WHERE
+	DesignationID=@DesignationID
+END
+
+/*DELETE PERSON*/
+
+CREATE PROCEDURE PR_PERSON_DELETE
+@WorkerID int
+AS
+BEGIN
+DELETE FROM PERASON
+WHERE
+	WorkerID=@WorkerID
+END

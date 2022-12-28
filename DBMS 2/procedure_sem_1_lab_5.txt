@@ -1,0 +1,234 @@
+/*1  Display the name of students whose name starts with ‘k’*/
+CREATE PROCEDURE PR_start_with_k
+AS
+BEGIN
+SELECT FIRSTNAME 
+FROM STUDENTS
+WHERE FIRSTNAME LIKE'K%'
+END
+
+/*2  Display the name of students whose name consists of five characters */
+
+CREATE PROCEDURE PR_consists_five_characters
+AS
+BEGIN
+SELECT FIRSTNAME 
+FROM STUDENTS
+WHERE FIRSTNAME LIKE'_____'
+END
+
+/*3. Retrieve the first name & last name of students whose city name ends with a & contains six characters*/
+
+CREATE PROCEDURE PR_city_endWith_a_and_contains_six_characters
+AS
+BEGIN	
+SELECT FIRSTNAME,LASTNAME
+FROM STUDENTS
+WHERE CITY LIKE'_____A'
+END
+
+/*4. Display all the students whose last name ends with ‘tel’.*/
+
+CREATE PROCEDURE PR_lastname_end_tel
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE LASTNAME LIKE'%TEL'
+END
+
+/*5. Display all the students whose first name starts with ‘ha’ & ends with ‘t’*/
+
+CREATE PROCEDURE PR_firstname_start_ha_end_t
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE FIRSTNAME LIKE'HA%T'
+END
+
+/*6. Display all the students whose first name starts with ‘k’ and third character is ‘y’.*/
+
+CREATE PROCEDURE PR_firstname_start_k_third_character_y
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE FIRSTNAME LIKE'K_Y%'
+END
+
+/*7. Display the name of students having no website and name consists of five characters.*/
+
+CREATE PROCEDURE PR_no_website_name_consists_five_characters
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE WEBSITE IS NULL AND FIRSTNAME LIKE'_____'
+END
+
+/*8. Display all the students whose last name consist of ‘jer’. */
+
+CREATE PROCEDURE PR_LASTNAME__CONSISTS_JER
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE LASTNAME LIKE'%JER%'
+END
+
+/*9. Display all the students whose city name starts with either ‘r’ or ‘b’.*/
+ 
+CREATE PROCEDURE PR_CITY_START_R_OR_B
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE CITY LIKE'[R,B]%'
+END
+
+/*10. Display all the name students having websites.*/
+
+CREATE PROCEDURE PR_HAVING_WEBSITE
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE WEBSITE IS NOT NULL
+END
+
+/*11. Display all the students whose name starts from alphabet A to H.*/
+
+CREATE PROCEDURE PR_firstname_start_a_to_h
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE FIRSTNAME LIKE'[A-H]%'
+END
+
+/*12. Display all the students whose name’s second character is vowel.*/
+
+CREATE PROCEDURE PR_firstname_second_charcter_vowel
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE FIRSTNAME LIKE('_[A,E,I,O,U]%')
+END
+
+/*13. Display student’s name whose city name consist of ‘rod’.*/
+
+CREATE PROCEDURE PR_city_consists_rod
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE CITY LIKE'%ROD%'
+END
+
+/*14. Retrieve the First & Last Name of students whose website name starts with ‘bi’.*/
+
+CREATE PROCEDURE PR_website_start_bi
+AS
+BEGIN
+SELECT FIRSTNAME,LASTNAME
+FROM STUDENTS
+WHERE WEBSITE LIKE'BI%'
+END
+
+/*15. Display student’s city whose last name consists of six characters*/
+
+CREATE PROCEDURE PR_lastname_consists_six_characters
+AS
+BEGIN
+SELECT CITY
+FROM STUDENTS
+WHERE LASTNAME LIKE'______'
+END
+
+/*16. Display all the students whose city name consist of five characters & not starts with ‘ba’.*/
+
+CREATE PROCEDURE PR_city_consists_five_characters_not_start_ba
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE CITY LIKE'_____' AND CITY NOT LIKE'BA%'
+END
+
+/*17. Show all the student’s whose division starts with ‘II’*/
+
+CREATE PROCEDURE PR_DIVISION_START_II
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE DIVISION LIKE'II%'
+END
+
+/*18. Find out student’s first name whose division contains ‘bc’ anywhere in division name*/
+
+CREATE PROCEDURE PR_division_contains_bc
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE DIVISION LIKE'%BC%'
+END
+
+/*19. Show student id and city name in which division consist of six characters and having website name. */
+
+CREATE PROCEDURE PR_division_consist_six_charecters_having_website
+AS
+BEGIN
+SELECT STUID,CITY
+FROM STUDENTS
+WHERE DIVISION LIKE'______' AND WEBSITE IS NOT NULL
+END
+
+/*20. Display all the students whose name’s third character is consonant.*/
+
+CREATE PROCEDURE PR_firstname_third_charecter_constant
+AS
+BEGIN
+SELECT FIRSTNAME
+FROM STUDENTS
+WHERE FIRSTNAME NOT LIKE'__[A,E,I,O,U]%'
+END
+
+
+/* LAB 8 */
+/*EXTRA*/
+CREATE PROCEDURE PR_input_dname
+@DeptName VARCHAR(50)
+AS
+BEGIN
+SELECT 
+DEPARTMENT, 
+COUNT(EID) [TOTAL PERSON],
+MAX(SALARY) [MAX SALARY],
+MIN(SALARY) [MIN SALARY],
+SUM(SALARY) [TOTAL SALARY]
+FROM EMPLOYEE
+WHERE DEPARTMENT=@DeptName
+GROUP BY DEPARTMENT
+END
+EXEC PR_input_dname 'IT'
+/*1. Display the Highest, Lowest, Total, and Average salary of all employees & label the columns Maximum,
+Minimum, Total_Sal and Average_Sal, respectively.*/
+
+CREATE PROCEDURE PR_highest_lowest_total_average_salary
+@CITY VARCHAR(50)
+AS
+BEGIN
+SELECT 
+MAX(SALARY) [MAXIMUM],
+MIN(SALARY) [MINIMUM],
+SUM(SALARY) [TOTAL_SEL],
+AVG(SALARY) [AVERAGE_SAL]
+FROM EMPLOYEE
+WHERE CITY=@CITY
+GROUP BY CITY
+END
+EXEC PR_highest_lowest_total_average_salary 'RAJKOT'
