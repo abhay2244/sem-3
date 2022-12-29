@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="Calculator.css">
+</head>
+<body>
+	<table align="center">
+		<tr>
+			<td colspan="4"><input type="text" name="" id="display"></td>
+		</tr>
+		<tr>
+			<td><button>%</button></td>
+			<td><button>c</button></td>
+			<td><button>back</button></td>
+			<td><button>/</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="">7</button></td>
+			<td><button onclick="">8</button></td>
+			<td><button onclick="">9</button></td>
+			<td><button onclick="">*</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="">4</button></td>
+			<td><button onclick="">5</button></td>
+			<td><button onclick="">6</button></td>
+			<td><button onclick="">-</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="getNumber(1)" id="number">1</button></td>
+			<td><button onclick="getNumber(2)" id="number">2</button></td>
+			<td><button onclick="getNumber(3)" id="number">3</button></td>
+			<td><button >+</button></td>
+		</tr>
+		<tr>
+			<td><button>+/-</button></td>
+			<td><button>0</button></td>
+			<td><button>.</button></td>
+			<td><button>=</button></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function getNumberOne(){
+			num1=document.getElementById("number").innerHTML
+			
+		}
+		function getNumberTwo(){
+			num1=document.getElementById("number2").innerHTML
+			document.getElementById("display").value+=num1
+		}
+	</script>
+</body>
+</html>

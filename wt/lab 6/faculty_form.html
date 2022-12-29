@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+	</table>
+	<script type="text/javascript">
+		facultys=
+		[
+			{name:"Arjun bala",department:"CSE",experiance:10},
+			{name:"Vasim Ghada",department:"civil",experiance:5},
+			{name:"Mehul Bhundiya",department:"ME",experiance:7},
+			{name:"Krunal Vyas",department:"Admin",experiance:1}
+
+		];
+		detail=facultys.map((fac)=>
+		{
+			return "<td>"+fac.name+"</br></br>"+fac.department+"</br></br>"+fac.experiance+"</td>"	
+			 
+			 
+		});
+		document.write("<table border='2px'>")
+		document.write("<tr>")
+		document.write(detail.join(''))
+		document.write("</tr>")
+		document.write("</table>")
+	</script>
+</body>
+</html>

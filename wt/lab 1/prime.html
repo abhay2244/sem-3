@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Prime number</title>
+</head>
+<body>
+	<script>
+		m=parseInt(prompt("please enter number"));
+		flag=1;
+		for ( i = 2; i <=m/2; i++) {
+			if (m%i==0) {
+				flag=0;
+				break;
+			}
+		}
+		if (flag==1) {
+			document.write("Number is prime");
+		}
+		else {
+			document.write("Number is not prime");
+		}
+	</script>
+</body>
+</html>

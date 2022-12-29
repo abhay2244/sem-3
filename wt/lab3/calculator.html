@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+<body>
+	<table align="center" >
+		<tr>
+			<td colspan="4"><input type="text" name="" id="ans"></td>
+		</tr>
+		<tr>
+			<td><button onclick="insert('%')" class="operator">%</button></td>
+			<td><button onclick="backword()" class="operator">back</button></td>
+			<td><button onclick="clearall()" class="operator">C</button></td>
+			<td><button onclick="insert('/')" class="operator">/</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="insert(7)" class="number">7</button></td>
+			<td><button onclick="insert(8)" class="number">8</button></td>
+			<td><button onclick="insert(9)" class="number">9</button></td>
+			<td><button onclick="insert('*')" class="operator">*</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="insert(4)"class="number">4</button></td>
+			<td><button onclick="insert(5)"class="number">5</button></td>
+			<td><button onclick="insert(6)"class="number">6</button></td>
+			<td><button onclick="insert('-')" class="operator">-</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="insert(1)" class="number">1</button></td>
+			<td><button onclick="insert(2)" class="number">2</button></td>
+			<td><button onclick="insert(3)" class="number">3</button></td>
+			<td><button onclick="insert('+')" class="operator">+</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="changeSign()" id="plusOrMinus">+/-</button></td>
+			<td><button onclick="insert(0)" class="number">0</button></td>
+			<td><button onclick="insert('.')" class="number">.</button></td>
+			<td><button onclick="equal()" id="equal">=</button></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function insert(num){
+			document.getElementById('ans').value+=num
+		}
+		function equal()
+		{
+			temp=document.getElementById('ans').value	
+			document.getElementById('ans').value=eval(temp)
+		}
+		function clearall()
+		{
+			document.getElementById('ans').value=""
+		}
+		function backword(){
+			temp=document.getElementById('ans').value
+			temp=temp.substr(0,(temp.lastIndexOf(""))-1)
+			document.getElementById('ans').value=temp
+		}
+		function changeSign(){
+			document.getElementById('ans').value=document.getElementById('ans').value*(-1)
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <title>StopWatch</title>
+    </head>
+
+    <body>
+        <div class="container bg-dark my-5 py-5">
+            <div class="text-center text-warning h1">StopWatch</div>
+
+            <div class="text-center mt-5 mb-4">
+                <button id="startbtn" onclick="time()" type="button" class="btn btn-success me-4" style="width:100px;">Start</button>
+                <button id="restartbtn" type="button" class="btn btn-danger" onclick="restarttime()" style="width:100px;">Restart</button>
+            </div>
+
+            <div class=" text-center text-secondary">
+                <input type="text" size="3px" value="00" disabled id="mminput"> <span class="h3"> : </span>
+                <input type="text" size="3px" value="00" disabled id="ssinput"> <span class="h3"> : </span>
+                <input type="text" size="3px" value="00" disabled id="mssinput">
+            </div>
+
+        </div>
+
+        <script>
+            function time() {
+                var dv = document.getElementById('startbtn');
+                if ((dv.innerHTML == 'Start') || (dv.innerHTML == 'Continue')) {
+                    document.getElementById('startbtn').innerHTML = 'Pause';
+                    myinterval = setInterval(startnewtime, 10);
+                }
+                else {
+                    clearInterval(myinterval);
+                    document.getElementById('startbtn').innerHTML = 'Continue';
+                }
+            }
+
+            function startnewtime() {
+                if (document.getElementById('mssinput').value == 99) {
+                    document.getElementById('mssinput').value = 00;
+                    if (document.getElementById('ssinput').value == 59) {
+                        document.getElementById('mminput').value++;
+                        document.getElementById('ssinput').value = 00;
+                    }
+                    else{
+                        document.getElementById('ssinput').value++;
+                    }
+                }
+                else{
+                    document.getElementById('mssinput').value++;
+                }
+            }
+            
+            function restarttime() {
+                clearInterval(myinterval);
+                document.getElementById('startbtn').innerHTML = 'Start';
+                document.getElementById('mssinput').value = '00';
+                document.getElementById('ssinput').value = '00';
+                document.getElementById('mminput').value = '00';
+            }
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
+	</table>
+	<script type="text/javascript">
+		facultys=
+		[
+			{name:"Arjun bala",department:"CSE",experiance:10},
+			{name:"Vasim Ghada",department:"civil",experiance:5},
+			{name:"Mehul Bhundiya",department:"ME",experiance:7},
+			{name:"Krunal Vyas",department:"Admin",experiance:1}
+
+		];
+		detail=facultys.map((fac)=>
+		{
+			if (fac.name=="Arjun bala") {	
+			return "<tr>"+"<td>"+"<img src='gopimadam.jpg' width='100px' height='100px'>"+"</td>"+"<td>"+fac.name+"</td>"+"<td>"+fac.department+"</td>"+"<td>"+fac.experiance+"</td>"+"</tr>"
+			}
+			else if(fac.name=="Vasim Ghada") {
+			return 	"<tr>"+"<td>"+"<img src='nileshsir.jpg' width='100px' height='100px'>"+"</td>"+"<td>"+fac.name+"</td>"+"<td>"+fac.department+"</td>"+"<td>"+fac.experiance+"</td>"+"</tr>"
+			}
+			else if(fac.name=="Mehul Bhundiya") {
+			return	"<tr>"+"<td>"+"<img src='jadejasir.jpg' width='100px' height='100px'>"+"</td>"+"<td>"+fac.name+"</td>"+"<td>"+fac.department+"</td>"+"<td>"+fac.experiance+"</td>"+"</tr>"
+			}
+			else if(fac.name=="Krunal Vyas") {
+			return	"<tr>"+"<td>"+"<img src='mauliksir.jpg' width='100px' height='100px'>"+"</td>"+"<td>"+fac.name+"</td>"+"<td>"+fac.department+"</td>"+"<td>"+fac.experiance+"</td>"+"</tr>"
+			}
+		
+		});
+		document.write("<table border='2px'>")
+		document.write("<tr>")
+		document.write("<td>")
+		document.write("photo")
+		document.write("</td>")
+		document.write("<td>")
+		document.write("name")
+		document.write("</td>")
+		document.write("<td>")
+		document.write("department")
+		document.write("</td>")
+		document.write("<td>")
+		document.write("experiance")
+		document.write("</td>")
+		document.write("</tr>")
+		document.write(detail.join(''))
+		document.write("</table>")
+	</script>
+</body>
+</html>

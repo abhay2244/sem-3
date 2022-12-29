@@ -1,0 +1,266 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">	
+		#snack{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 300px;
+			left: 700px;
+		}
+		#apple{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+
+		}
+		#header{
+			height: 8vh;
+			width: 100%;	
+		}
+		#scorebooad	{
+			width: 30%;
+			height: 10vh;
+			float:left; 	
+			font-size: 30px;
+			font-weight: bold;
+			margin-left: 9%;
+
+		}
+		#buttonArrow{
+			width: 25%;
+			height: 10vh;
+			float: left; 
+			font-size: 20px;
+			margin-left: 5%;
+			
+		}
+		#revive{
+			width: 20%;
+			height: 10vh;
+			float:left;	
+			font-size: 30px;
+			font-weight: bold;
+			margin-left: 8%;
+			margin-right: 2%;
+			margin-top: 0px;
+		}
+		#chance{
+					
+			height: 50px;
+			width: 50px;
+			float: right;
+			font-size: 35px;
+			font-weight: bold;
+			margin-top: 0px;		
+			margin-right: 38%;
+
+		}
+		#content{
+			border: 1px solid red;
+			width: 99px;
+			height: 89vh;
+		}
+	</style>
+</head>
+<body onload="applePosition()" onkeydown="checkKey(event)" >
+	<div id="header">
+		<div id="buttonArrow" >
+			<button onclick="gocontinues('left')" >Left</button>
+			<button onclick="gocontinues('right')" >Right</button>
+			<button onclick="gocontinues('up')" >Up</button>
+			<button onclick="gocontinues('down')" >Down</button>
+		</div>	
+		<div id="scorebooad">
+			 Score : 
+			 <input type="text" id="score" value="0" style="height: 25px; width: 100px;text-align: center; font-size: 25px; margin-top: 10px; ">
+		</div>	
+		<div id="revive">
+			Chance : <h1 id="chance">3</h1>
+		</div>
+	</div>
+	<div id="content">
+		<img src="snack.jpg" id="snack" >
+		<img src="apple.jpg" id="apple">
+		<h1 id="signal" style="position: absolute; top: 300px; left: 500px;"></h1>
+	</div>
+	<script type="text/javascript">
+		x=700;
+		y=300;
+		snackLeft=0;
+		snackRight=0;
+		score=0;
+		chance=3;
+		temp=0;
+		number=0;
+		pause=true;
+		function gocontinues(side){
+			getSide=side
+			clearInterval(temp)
+			switch(side){
+				case "left":
+				temp=setInterval(Goleft,100)
+				break;
+				case "right":
+				temp=setInterval(GoRight,100)
+				break;
+				case "up":
+				temp=setInterval(GoUp,100)
+				break;
+				case "down":
+				temp=setInterval(GoDown,100)
+				break;
+			}
+		}
+		function Goleft(){
+			i=3;
+			x-=10;
+			document.getElementById('snack').style.left=x + "px"
+			if (x<0) {
+				clearInterval(temp)
+				document.getElementById('signal').innerHTML="snack dead"
+				chance--;
+				if (chance<=0) {
+					document.write("<h1>game Over</h1>")
+					document.write("<button onclick='restartpage()'>restart</button>")
+				}
+				else{
+					number=setInterval(printTimer,1000)
+					document.getElementById('chance').innerHTML=chance;
+				}
+			}
+			CheckApplePosition();
+		}
+		function GoRight(){
+			x+=10;
+			i=3;
+			document.getElementById('snack').style.left=x + "px"
+			if (x>screen.availWidth) {
+				clearInterval(temp)
+				document.getElementById('signal').innerHTML="snack dead"
+				chance--;
+				if (chance<=0) {
+					document.write("<h1>game Over</h1>")
+					document.write("<button onclick='restartpage()'>restart</button>")
+				}
+				else{
+					number=setInterval(printTimer,1000)
+					document.getElementById('chance').innerHTML=chance;
+				}	
+			}
+			CheckApplePosition();
+		}
+		function GoUp(){
+			y-=10;
+			i=3;
+			document.getElementById('snack').style.top=y + "px"
+			if (y<0) {
+				clearInterval(temp)
+				document.getElementById('signal').innerHTML="snack dead"
+				
+				chance--;
+				if (chance<=0) {
+					
+					document.write("<h1>game Over</h1>")
+					document.write("<button onclick='restartpage()'>restart</button>")
+				}
+				else{
+					number=setInterval(printTimer,1000)
+					document.getElementById('chance').innerHTML=chance;
+				}
+			}
+			CheckApplePosition();
+		}
+		function GoDown(){
+			y+=10;
+			i=3;
+			document.getElementById('snack').style.top=y + "px"
+			if (y>screen.availHeight) {
+				clearInterval(temp)
+				document.getElementById('signal').innerHTML="snack dead"
+				chance--;
+				if (chance<=0) {
+					document.write("<h1>game Over</h1>")
+					document.write("<button onclick='restartpage()'>restart</button>")	
+				}
+				else{
+					number=setInterval(printTimer,1000)
+					document.getElementById('chance').innerHTML=chance;
+				}
+			}
+			CheckApplePosition();
+		}
+		function applePosition(){
+			console.log(document.getElementById('content'))
+			topOfApple=parseInt(Math.random()*document.getElementById('content').width); 
+			leftOfApple=parseInt(Math.random()*document.getElementById('content').height);		 
+			document.getElementById("apple").style.left = leftOfApple + "px";
+			document.getElementById("apple").style.top = topOfApple + "px";
+		}
+		function CheckApplePosition(){
+			if (leftOfApple-100<x && leftOfApple+100>x && topOfApple-100<y && topOfApple+100>y) {
+				applePosition();
+				score++;
+				document.getElementById('score').value=score;
+			}
+		
+		}
+		function printTimer(){
+										
+				if (i<=0) {
+					clearInterval(number)
+					document.getElementById('signal').innerHTML=""
+					document.getElementById('snack').style.left=700 +"px"
+					document.getElementById('snack').style.top=300 +"px"
+					x=700;
+					y=300;
+					applePosition();
+				
+				}
+				else{
+					document.getElementById('signal').innerHTML=i;
+					i--;
+				}
+				
+		}	
+		function pauseSnack(){
+			
+			if (pause) {
+				clearInterval(temp);
+				pause=false;
+			}
+			else {
+				gocontinues(getSide);	
+				pause=true;
+			}
+		}
+		function restartpage(){
+				window.location.reload();
+		}
+		function checkKey(e){
+			
+			switch(e.keyCode)
+			{
+				case 37:
+				gocontinues('left');
+				break;
+				case 38:
+				gocontinues('up');
+				break;
+			    case 39:
+				gocontinues('right');
+				break;
+			    case 40:
+				gocontinues('down');
+				break;
+				case 32:
+				pauseSnack();
+				break;
+			}
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		#ansDiv{
+			height: 50vh;
+			width: 50%;
+			position: fixed;
+			border: 1px solid red;
+			margin-left: 40%;
+			margin-top: 20vh;
+
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="Check All" onclick="checkAll()" name="">
+	<input type="button" value="Uncheck All" onclick="uncheckAll()" name=""></br>
+	<div id="ansDiv"></div>
+	
+	<script type="text/javascript">
+	
+		for(i=101;i<=162;i++){
+			document.write('<input type="checkbox" name="i" value="'+i+'" onclick="absentNumber()" >'+" "+i+"</br>")		
+		}
+		function absentNumber() {
+
+			var absStu=document.getElementsByTagName("input");
+			absStu="";
+			var allstu=document.getElementsByTagName("input");
+			for (i = 0; i < allstu.length; i++) {
+				if (!allstu[i].checked) {
+					absStu += allstu[i].value +" , "
+				}
+			}
+			document.getElementById("ansDiv").innerHTML=absStu;
+		}
+		function checkAll() {
+
+			var allstu=document.getElementsByTagName("input");
+			for(i=0;i<=63;i++){
+				allstu[i].checked=true;
+			}
+			absStu=""
+			document.getElementById("ansDiv").innerHTML=absStu;
+
+		}
+		function uncheckAll() {
+			var allstu=document.getElementsByTagName("input");
+			for(i=0;i<=63;i++){
+				allstu[i].checked=false;
+			}
+			absStu=""
+			for (i = 0; i < allstu.length; i++) {
+				if (!allstu[i].checked) {
+					if (allstu[i].value=="Check All" || allstu[i].value=="Uncheck All") {
+				
+					}
+					else {
+						
+							absStu += allstu[i].value +" , "
+						
+					}
+				}
+			}
+			document.getElementById("ansDiv").innerHTML=absStu;
+		}
+		
+	</script>
+</body>
+</html>

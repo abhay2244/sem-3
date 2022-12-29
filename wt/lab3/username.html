@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	Enter UserName:
+	<input type="text" name="" id="username"></br></br>
+	Enter Password:
+	<input type="password" name="" id="passwordForId">&nbsp;
+	<input type="button" name="" value="show" onclick="togglePass()" id="togglebutton"> </br></br>
+	<input type="button" value="login" onclick="checkUser()" name="">
+	
+	<script type="text/javascript">
+		function checkUser()
+		{
+			u1=document.getElementById('username').value
+			p1=document.getElementById('passwordForId').value
+			if (u1=="abhay" && p1=="212004") {
+				document.write("valid user")
+			}
+			else {
+				document.write("invalid user");
+			}
+		}
+		function togglePass()
+		{
+			t=document.getElementById('passwordForId')
+			tc=document.getElementById('togglebutton')
+
+			if (t.type=="password") {
+							
+				t.type="text";
+				tc.value="hide";
+				
+			}
+			else {
+				t.type="password";
+				tc.value="show";
+				
+			}
+		}
+	</script>
+</body>
+</html>

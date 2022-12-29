@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Prime number between two number</title>
+</head>
+<body>
+	<script type="text/javascript">
+		number=parseInt(prompt("please enter number"));
+		document.write("prime number are"+"<br>");
+		flag=1;
+		for(i=2;i<=number;i++)
+		{
+			flag=1;
+			for(j=2;j<i;j++)
+			{
+				if(i%j==0) {
+					flag=0;
+					break;
+				}
+			}
+			if(flag==1)
+			{
+				document.write(i+"<br>");
+			}
+		}
+	</script>
+</body>
+</html>
