@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-3 card" *ngFor="let fac of data">
+        <img [src]="fac.facultiesImage" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{fac.facultiesName}}</h5>
+          <p class="card-text">{{fac.department}}</p>
+          <p class="card-text">{{fac.city}}</p>
+          <p class="card-text">{{fac.createdAt}}</p>
+          <a routerLink="/faculty/{{ fac.id }}" class="btn btn-primary">Get Detail</a>
+          <a (click)="delete(fac.id)" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,13 @@
+<h1>
+    {{ data.facultiesName }}
+</h1>
+<h1>
+    {{ data.department }}
+</h1>
+<h1>
+    {{ data.city }}
+</h1>
+
+<button routerLink="/faculties" class="btn btn-primary">Back</button>
+<button routerLink="/faculty/edit/{{data.id}}" class="btn btn-warning">Edit</button>
+<button (click)="delete()" class="btn btn-danger">Delete</button>
